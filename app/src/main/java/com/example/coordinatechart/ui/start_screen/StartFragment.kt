@@ -78,11 +78,7 @@ class StartFragment @Inject constructor() : Fragment() {
 
                         is StartScreenState.Error -> {
                             binding?.progressBar?.isVisible = false
-                            if (it.message == POINT_LIMIT_ERROR) {
-                                showToast(getString(R.string.start_screen_error_state_point_limit))
-                            } else {
-                                showToast(it.message)
-                            }
+                            showToast(it.message)
                         }
 
                         is StartScreenState.Success -> {
@@ -99,7 +95,4 @@ class StartFragment @Inject constructor() : Fragment() {
         Toast.makeText(requireContext(), toastText, Toast.LENGTH_SHORT).show()
     }
 
-    companion object {
-        const val POINT_LIMIT_ERROR = "Requested number of points is invalid"
-    }
 }
