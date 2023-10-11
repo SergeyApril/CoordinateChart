@@ -1,10 +1,8 @@
 package com.example.coordinatechart.ui.start_screen
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coordinatechart.domen.entity.AppData
-import com.example.coordinatechart.domen.entity.Coordinate
 import com.example.coordinatechart.domen.usecase.GetCoordinateUseCaseApi
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.delay
@@ -28,12 +26,14 @@ class StartFragmentViewModel @Inject constructor(
                 if (exception.code() != 200) {
                     val message = exception.response()?.errorBody()?.string() ?: exception.message()
                     _coordinateState.value = StartScreenState.Error(message = message)
+                    _coordinateState.value = StartScreenState.Initial
                 }
             }
 
             else -> {
                 _coordinateState.value =
                     StartScreenState.Error(message = exception.toString())
+                _coordinateState.value = StartScreenState.Initial
             }
         }
     }
@@ -45,8 +45,7 @@ class StartFragmentViewModel @Inject constructor(
             delay(500)
             val coordinate = getCoordinateUseCase.execute(pointValue)
             getaAppData.setResultList(coordinate.pointList)
-            Log.d("CoordinateApp", "coordinate is : ${coordinate.pointList.toString()}")
-            _coordinateState.value = StartScreenState.Success(coordinate)
+            _coordinateState.value = StartScreenState.Success
             _coordinateState.value = StartScreenState.Initial
         }
     }
@@ -55,6 +54,6 @@ class StartFragmentViewModel @Inject constructor(
 sealed class StartScreenState {
     data object Initial : StartScreenState()
     data object Loading : StartScreenState()
-    class Success(val coordinate: Coordinate) : StartScreenState()
+    data object Success : StartScreenState()
     class Error(val message: String) : StartScreenState()
 }
