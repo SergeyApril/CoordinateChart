@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CoordinateChart</string>->
+    <string name="start_screen_title">Укажите количество координат:</string>
+    <string name="start_screen_button_text">Поехали</string>
+    <string name="start_screen_input_hint">Введите число не более 1000</string>
+    <string name="start_screen_error_state_another_reason">Что-то пошло не так</string>
+    <string name="start_screen_error_state_point_limit">Максимальное количество точек не более 1000</string>
+    <string name="start_screen_error_state_retry_button">Повторить</string>
+    <string name="start_screen_toast_error_input_not_int">Нужно ввести число, а не буквы</string>
+    <string name="start_screen_toast_error_input_empty">Поле ввода не может быть пустым</string>
+</resources>

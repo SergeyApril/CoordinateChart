@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinate_nav_graph">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.coordinatechart.ui.start_screen.StartFragment"
+        android:label="StartFragment" />
+
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.coordinatechart.ui.result_screen.ResultFragment"
+        android:label="ResultFragment" />
+
+</navigation>
